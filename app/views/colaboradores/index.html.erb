@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Colaboradores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Celular</th>
+      <th>Email</th>
+      <th>Dt inicio</th>
+      <th>Dt saida</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @colaboradores.each do |colaborador| %>
+      <tr>
+        <td><%= colaborador.nome %></td>
+        <td><%= colaborador.telefone %></td>
+        <td><%= colaborador.celular %></td>
+        <td><%= colaborador.email %></td>
+        <td><%= colaborador.dt_inicio %></td>
+        <td><%= colaborador.dt_saida %></td>
+        <td><%= link_to 'Exibir', colaborador %></td>
+        <td><%= link_to 'Editar', edit_colaborador_path(colaborador) %></td>
+        <td><%= link_to 'Excluir', colaborador, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Colaborador', new_colaborador_path %>
