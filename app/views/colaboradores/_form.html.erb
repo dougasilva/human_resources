@@ -1,0 +1,30 @@
+
+<%= simple_form_for @colaborador, html:{ class: 'form-control' } do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :nome, label: 'Nome:' %>
+    <%= f.input :sexo, label: 'Sexo:', collection: [['Masculino', 'M'],['Feminino', 'F']], 
+                       as: :radio_buttons, item_wrapper_class: 'custom-control custom-control-inline' %>
+    <%= f.input :dt_nascimento, label: 'Data de Nascimento:', as: :date, html5: true %>
+    <%= f.input :cpf, label: 'CPF:' %>
+    <%= f.input :rg, label: 'RG:' %>
+    <%= f.input :endereco, label: 'Logradouro:' %>
+    <%= f.input :numero, label: 'Numero:' %>
+    <%= f.input :compl, label: 'Compl:' %>
+    <%= f.input :cep, label: 'CEP:' %>
+    <%= f.input :bairro, label: 'Bairro:' %>
+    <%= f.input :cidade, label: 'Cidade:' %>
+    <%= f.input :estado, label: 'Estado:' %>
+    <%= f.input :telefone, label: 'Telefone:' %>
+    <%= f.input :celular, label: 'Celular:' %>
+    <%= f.input :email, label: 'Email:' %>
+    <%= f.input :foto, label: 'Foto:', as: :file %>
+    <%= f.input :dt_inicio, label: 'Data de Entrada:', as: :date, html5: true %>
+    <%= f.input :dt_saida, label: 'Data de Saída:', as: :date, html5: true %>
+    
+  <div class="form-actions">
+    <%= f.button :submit, 'Salvar', class: "btn btn-default btn-primary" %>
+    <%= link_to 'Voltar', colaboradores_path, class: "btn btn-default btn-warning" %>
+  </div>
+<% end %>
