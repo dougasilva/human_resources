@@ -1,4 +1,5 @@
 class Colaborador < ApplicationRecord
+  belongs_to :cargo
   validates :nome, :cidade, :bairro, :endereco, presence: true,
                                                 length: { maximum: 80 }
   validates :sexo, presence: true, length: { is: 1 }

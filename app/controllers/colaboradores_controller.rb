@@ -1,28 +1,18 @@
 class ColaboradoresController < ApplicationController
-  before_action :set_colaborador, only: [:show, :edit, :update, :destroy]
+  before_action :set_colaborador, only: %i[show edit update destroy]
 
-  # GET /colaboradores
-  # GET /colaboradores.json
   def index
     @colaboradores = Colaborador.all
   end
 
-  # GET /colaboradores/1
-  # GET /colaboradores/1.json
-  def show
-  end
+  def show; end
 
-  # GET /colaboradores/new
   def new
     @colaborador = Colaborador.new
   end
 
-  # GET /colaboradores/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /colaboradores
-  # POST /colaboradores.json
   def create
     @colaborador = Colaborador.new(colaborador_params)
 
@@ -37,8 +27,6 @@ class ColaboradoresController < ApplicationController
     end
   end
 
-  # PATCH/PUT /colaboradores/1
-  # PATCH/PUT /colaboradores/1.json
   def update
     respond_to do |format|
       if @colaborador.update(colaborador_params)
@@ -51,8 +39,6 @@ class ColaboradoresController < ApplicationController
     end
   end
 
-  # DELETE /colaboradores/1
-  # DELETE /colaboradores/1.json
   def destroy
     @colaborador.destroy
     respond_to do |format|
@@ -62,16 +48,15 @@ class ColaboradoresController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_colaborador
       @colaborador = Colaborador.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def colaborador_params
       params.require(:colaborador).permit(:nome, :sexo, :dt_nascimento, :estado,
                                           :cpf, :rg, :numero, :compl, :cep, :foto,
                                           :cidade, :endereco, :telefone, :celular,
-                                          :email, :bairro, :dt_inicio, :dt_saida)
+                                          :email, :bairro, :dt_inicio, :dt_saida,
+                                          :cargo_id)
     end
 end

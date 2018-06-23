@@ -17,5 +17,6 @@ FactoryBot.define do
     foto { "#{Rails.root}/spec/fixtures/avatar.png" }
     dt_inicio { Faker::Date.backward(14) }
     dt_saida { Faker::Date.forward(500) }
+    cargo
   end
 end

@@ -10,11 +10,13 @@ RSpec.feature 'Colaboradores', type: :feature do
   scenario 'Cadastro de Colaborador Válido' do
     visit(new_colaborador_path)
     colaborador_name = Faker::Name.name
+    cargo = create(:cargo, nome: 'Dev')
     fill_in('Nome', with: colaborador_name)
     choose(option: %w[F M].sample)
     fill_in('Data de Nascimento', with: Faker::Date.birthday(18, 40))
     fill_in('CPF', with: BRDocuments::CPF.generate(false))
     fill_in('RG', with: '273177072')
+    select('Dev', from: 'Cargo')
     fill_in('Logradouro', with: Faker::Address.street_name)
     fill_in('Numero', with: Faker::Address.building_number)
     fill_in('CEP', with: Faker::Address.postcode)
@@ -29,6 +31,7 @@ RSpec.feature 'Colaboradores', type: :feature do
     click_on('Salvar')
 
     expect(page).to have_content('Colaborador criado')
+    expect(page).to have_content(cargo.nome)
     expect(Colaborador.last.nome).to eq(colaborador_name)
   end
 
@@ -41,7 +44,7 @@ RSpec.feature 'Colaboradores', type: :feature do
   scenario 'Atualiza um colaborador' do
     colaborador = create(:colaborador)
     new_name = Faker::Name.name
-    visit(edit_colaborador_path(colaborador.id))
+    visit(edit_colaborador_path(colaborador))
     fill_in('Nome', with: new_name)
     click_on('Salvar')
 
@@ -52,7 +55,7 @@ RSpec.feature 'Colaboradores', type: :feature do
   scenario 'Apaga um colaborador' do
     create(:colaborador)
     visit colaboradores_path
-    
+
     click_on 'Excluir'
 
     expect(page).to have_content('Colaborador excluído')

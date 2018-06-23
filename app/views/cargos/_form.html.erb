@@ -1,0 +1,15 @@
+
+<%= simple_form_for(@cargo) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nome, label: 'Nome:' %>
+    <%= f.input :descricao, label: 'Descrição:' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Salvar', class: "btn btn-default btn-primary" %>
+    <%= link_to 'Voltar', cargos_path, class: "btn btn-default btn-warning" %>
+  </div>
+<% end %>
