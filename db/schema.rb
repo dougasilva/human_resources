@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619002050) do
+ActiveRecord::Schema.define(version: 20180622225728) do
+
+  create_table "cargos", force: :cascade do |t|
+    t.string "nome"
+    t.string "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "colaboradores", force: :cascade do |t|
     t.string "nome"
@@ -33,6 +40,8 @@ ActiveRecord::Schema.define(version: 20180619002050) do
     t.date "dt_saida"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cargo_id"
+    t.index ["cargo_id"], name: "index_colaboradores_on_cargo_id"
   end
 
 end

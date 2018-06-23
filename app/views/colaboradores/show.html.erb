@@ -1,3 +1,5 @@
+<h2>Exibir Colaborador</h2>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -11,8 +13,8 @@
 </p>
 
 <p>
-  <strong>Dt nascimento:</strong>
-  <%= @colaborador.dt_nascimento %>
+  <strong>Data de Nascimento:</strong>
+  <%= @colaborador.dt_nascimento.strftime('%d/%m/%Y') %>
 </p>
 
 <p>
@@ -26,7 +28,12 @@
 </p>
 
 <p>
-  <strong>Endereco:</strong>
+  <strong>Cargo:</strong>
+  <%= @colaborador.cargo.nome %>
+</p>
+
+<p>
+  <strong>Logradouro:</strong>
   <%= @colaborador.endereco %>
 </p>
 
@@ -81,14 +88,16 @@
 </p>
 
 <p>
-  <strong>Dt inicio:</strong>
-  <%= @colaborador.dt_inicio %>
+  <strong>Data de Inicio:</strong>
+  <%= @colaborador.dt_inicio.strftime('%d/%m/%Y') %>
 </p>
 
 <p>
-  <strong>Dt:</strong>
-  <%= @colaborador.dt_saida %>
+  <strong>Data de Saída:</strong>
+  <% if @colaborador.dt_saida %>
+    <%= @colaborador.dt_saida.strftime('%d/%m/%Y') %>
+  <% end %>
 </p>
 
-<%= link_to 'Edit', edit_colaborador_path(@colaborador) %> |
-<%= link_to 'Back', colaboradores_path %>
+<%= link_to 'Editar', edit_colaborador_path(@colaborador) %> |
+<%= link_to 'voltar', colaboradores_path %>

@@ -9,6 +9,7 @@
     <%= f.input :dt_nascimento, label: 'Data de Nascimento:', as: :date, html5: true %>
     <%= f.input :cpf, label: 'CPF:' %>
     <%= f.input :rg, label: 'RG:' %>
+    <%= f.association :cargo, label: 'Cargo:', label_method: :nome, value_method: :id %>
     <%= f.input :endereco, label: 'Logradouro:' %>
     <%= f.input :numero, label: 'Numero:' %>
     <%= f.input :compl, label: 'Compl:' %>
