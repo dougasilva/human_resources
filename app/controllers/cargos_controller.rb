@@ -15,44 +15,34 @@ class CargosController < ApplicationController
 
   def create
     @cargo = Cargo.new(cargo_params)
-
-    respond_to do |format|
-      if @cargo.save
-        format.html { redirect_to @cargo, notice: 'Cargo criado.' }
-        format.json { render :show, status: :created, location: @cargo }
-      else
-        format.html { render :new }
-        format.json { render json: @cargo.errors, status: :unprocessable_entity }
-      end
+    if @cargo.save
+      respond_with @cargo
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @cargo.update(cargo_params)
-        format.html { redirect_to @cargo, notice: 'Cargo atualizado.' }
-        format.json { render :show, status: :ok, location: @cargo }
-      else
-        format.html { render :edit }
-        format.json { render json: @cargo.errors, status: :unprocessable_entity }
-      end
+    @cargo = Cargo.new(cargo_params)
+    if @cargo.save
+      respond_with @cargo
+    else
+      render :new
     end
   end
 
   def destroy
     @cargo.destroy
-    respond_to do |format|
-      format.html { redirect_to cargos_url, notice: 'Cargo excluído.' }
-      format.json { head :no_content }
-    end
+    respond_with @cargo
   end
 
   private
-    def set_cargo
-      @cargo = Cargo.find(params[:id])
-    end
+  
+  def set_cargo
+    @cargo = Cargo.find(params[:id])
+  end
 
-    def cargo_params
-      params.require(:cargo).permit(:nome, :descricao)
-    end
+  def cargo_params
+    params.require(:cargo).permit(:nome, :descricao)
+  end
 end
