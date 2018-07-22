@@ -1,1 +1,2 @@
-json.array! @colaboradores, partial: 'colaboradores/colaborador', as: :colaborador
+json.array! @colaboradores, partial: 'colaboradores/colaborador',
+                            as: :colaborador
