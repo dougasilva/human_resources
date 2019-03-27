@@ -4,7 +4,7 @@ FactoryBot.define do
     sexo { %w[F M].sample }
     dt_nascimento { Faker::Date.birthday(18, 40) }
     cpf { BRDocuments::CPF.generate(false) }
-    rg '273177072'
+    rg { '273177072' }
     endereco { Faker::Address.street_name }
     numero { Faker::Address.building_number }
     cep { Faker::Address.zip_code }

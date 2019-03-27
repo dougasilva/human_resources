@@ -6,43 +6,43 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bootstrap-sass'
-gem 'jbuilder', '~> 2.5'
-gem 'puma', '~> 3.7'
-gem 'rails', '~> 5.1.6'
-gem 'rails-i18n', '~> 5.0.0'
-gem 'responders', '~> 2.0'
+gem 'jbuilder'
+gem 'puma'
+gem 'rails', '~> 5.2.2'
+gem 'rails-i18n'
+gem 'responders'
 gem 'simple_form'
-gem 'sqlite3'
-gem 'turbolinks', '~> 5'
+gem 'sqlite3', '~> 1.3.6'
+gem 'turbolinks'
 
 group :assets do
-  gem 'coffee-rails', '~> 4.2'
-  gem 'sass-rails', '~> 5.0'
-  gem 'uglifier', '>= 1.3.0'
+  gem 'coffee-rails'
+  gem 'sass-rails'
+  gem 'uglifier'
 end
 
 group :development, :test do
-  gem 'brazilian_documents', '~> 0.1.4'
+  gem 'brazilian_documents'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
   gem 'chromedriver-helper'
-  gem 'factory_bot_rails', '~> 4.0'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.6'
   gem 'rubocop'
   gem 'rubocop-rspec'
-  gem 'selenium-webdriver', '~> 2.53.4'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   gem 'spring-commands-rspec'
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'spring-watcher-listen'
+  gem 'web-console'
 end
 
 group :test do
